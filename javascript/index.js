@@ -2,7 +2,9 @@ function buttonEnter(){}
 
 function buttonStart(){}
 
-function playWithCards(){}
+function playWithCards(){
+
+}
 
 function exitGame(){}
 
