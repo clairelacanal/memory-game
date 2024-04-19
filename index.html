@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/pico.min.css" />
+    <link rel="stylesheet" href="styles/pico-main/css/pico.amber.css" />
     <link rel="stylesheet" href="styles/style.css"/>
     <title>Document</title>
 </head>
 <body>
-    <section>
-        <h1>Hello</h1>
-        <input type="text" name="valid" value="Valid" aria-invalid="false"/>
-        <input type="text" name="invalid" value="Invalid" aria-invalid="true"/>
-        <input type="submit" />
+    <section id="background-popup">
+        <h1>Flower Memory</h1>
+        <input type="text" name="valid" value="Enter your name" aria-invalid="false"/>
+        <input type="text" name="invalid" value="Enter your age" aria-invalid="true"/>
+        <button type="button" id="button-enter" name="enter" value="Enter">Enter</button> 
     </section>
+    <script src="./javascript/index.js"></script>
 </body>
 </html>
