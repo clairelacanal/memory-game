@@ -16,6 +16,12 @@
 
 html {
     --background-white:#ffffff;
+    --color-text-title: #2E4A81;
+    --background-beige: #B6AA8A;
+    --background-yellow: #CC9143;
+    --backgroung-green: #20363C;
+    --color-text:#ffffff;
+    --color-text:#0C0C0C;
     
 }
 
@@ -26,15 +32,18 @@ body {
 #background-popup{
     background-image: url(../images/background/background-flower.jpg);
     background-size: cover;
-    width: 100%;
-    height: 100%;
+}
+
+#container-popup{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
 }
 
-h1 {
-    font-weight: 100;
+#container-popup h1 {
+    color:var(--color-text-title);
+    font-size: 4rem;
+    font-weight:100;
     font-style: italic;
 }
