@@ -20,9 +20,22 @@
 
     <!--MAIN SECTION GAME-->
     <main>
-        <h2>Memory Flower</h2>
-        <p id="paragraphe-presentation"></p>
+        <section>
+            <h2>Memory Flower</h2>
+                <p id="display-text"></p>
+                <button id="button-start">start</button>
+                <div class="display-chrono">
+                    <div id="time">
+                        <span class="digit" id="min">02</span>
+                        <span class="text">Min</span>
+                        <span class="digit" id="sec">00</span>
+                        <span class="text">Sec</span>
+                    </div>
+                </div>
+        </section>
+        <section id="display-cards"></section>
     </main>
     <script src="./javascript/index.js"></script>
+    <script src="'./javascript/cards.js"></script>
 </body>
 </html>
