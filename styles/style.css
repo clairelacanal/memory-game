@@ -80,8 +80,8 @@ main {
 
 
 .cards {
-    width: 10rem;  
-    height: 13rem; 
+    width: 7rem;  
+    height: 9rem; 
     object-fit: cover;  
     border-radius: 10px; 
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
