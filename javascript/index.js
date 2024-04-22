@@ -21,6 +21,7 @@ function displayText(){
     const inputName = document.querySelector('#name').value;
     const paragraphe = document.querySelector('#display-text');
     paragraphe.textContent = `Hello ${inputName}, find the 12 pairs of flowers! Watch the clock! To start playing, press the start button."`;
+    paragraphe.className = "paragraphe-presentation"
 }
 
 function displayCards() {
