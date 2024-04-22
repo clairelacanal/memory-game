@@ -50,6 +50,9 @@ function displayCards() {
       //gérer le retournement des cartes
         cardElement.addEventListener('click', () => {
             // Logique de retournement ou de vérification des paires
+            if(cardElement.src.includes('carte-face-cachee.jpg')){
+                cardElement.src = card.picture; 
+            }
         });
 
         displaySection.appendChild(cardElement); 
