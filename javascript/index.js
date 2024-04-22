@@ -2,10 +2,6 @@
 const buttonEnter = document.querySelector('#button-enter');
 const buttonStart = document.querySelector('#button-start');
 
-
-
-
-
   
 //EVENEMENTS SUR LES BOUTONS
 buttonEnter.addEventListener('click', function(){
@@ -14,20 +10,12 @@ buttonEnter.addEventListener('click', function(){
 
 buttonStart.addEventListener('click',function(){
     console.log('bouton start cliqué');
-    shuffle(window.totalCards); // S'assurer que totalCards est accessible
+    shuffle(totalCards); 
     displayCards();
 })
 
-//FONCTIONS
-/*function getName(){
-alert(inputName);
-}*/
 
-
-/*function getAge(){
-const inputAge = document.querySelector('#age').value;
-alert(inputAge);
-}*/
+//FONCTIONS 
 
 function displayText(){
     const inputName = document.querySelector('#name').value;
@@ -45,20 +33,64 @@ function displayCards() {
         cardElement.src = '../images/cards/carte-face-cachee.jpg';  
         cardElement.alt = "carte face cachée"; 
         cardElement.className = "card"; 
-
        
       //gérer le retournement des cartes
         cardElement.addEventListener('click', () => {
-            // Logique de retournement ou de vérification des paires
-            if(cardElement.src.includes('carte-face-cachee.jpg')){
-                cardElement.src = card.picture; 
-            }
+            flipCard(card, cardElement);  
         });
 
         displaySection.appendChild(cardElement); 
     });
 }
 
+function shuffle(array){
+    for(let i = array.length -1; i > 0; i--){
+        const j = Math.floor(Math.random()*(i+1));
+        [array[i],array[j]] = [array[j],array[i]];
+    }
+}
+
+//Varriables globales flipCard()
+let firstCard = null; //stocke la première carte cliquée
+let secondCard = null; //stocke la seconde carte cliquée
+let isChecking = false //Pour empêcher le retournement de plus de DEUX cartes à la fois
+
+function flipCard(card,cardElement){
+
+    if(isChecking) return; // Ne fait rien si déjà en train de vérifier deux cartes
+    if(cardElement.classList.contains('flipped')) return; // empêche le recliquage sur la même carte;
+    cardElement.classList.add('flipped'); //ajoute la classe pour indiquer que la carte est retournée;
+    cardElement.src = card.picture; //change l'image pour montrer la face de la carte;
+
+    if(!firstCard){
+        //Si aucune carte n'est actuellement stockée, stocke la première carte
+        firstCard = {card, cardElement};
+    }else{
+        //rend une deuxième carte si une première est déjà stockée
+        secondCard = {card,cardElement};
+        isChecking = true;
+
+        //Vérifie si les deux cartes correspondent
+        if(firstCard.card.name === secondCard.card.name){
+            //Correspondance trouvée
+            firstCard = null;
+            secondCard = null;
+            isChecking = false;
+        } else {
+            //Pas de correspondance, retourner les cartes aprés un court délais
+            setTimeout(() => {
+                firstCard.cardElement.classList.remove('flipped');
+                secondCard.cardElement.classList.remove('flipped');
+                firstCard.cardElement.src = '../images/cards/carte-face-cachee.jpg';
+                secondCard.cardElement.src = '../images/cards/carte-face-cachee.jpg';
+
+                firstCard = null;
+                secondCard = null;
+                isChecking = false;
+            }, 1000);
+        }
+    }
+}
 
 
 
@@ -69,7 +101,6 @@ function displayCards() {
 
 /*function buttonStart(){}
 
-function playWithCards(){}
 
 function exitGame(){}
 
