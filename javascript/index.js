@@ -5,6 +5,7 @@ const buttonStart = document.querySelector('#button-start');
 
 
 
+
   
 //EVENEMENTS SUR LES BOUTONS
 buttonEnter.addEventListener('click', function(){
@@ -37,9 +38,11 @@ function displayCards(){
 const randomIndex = Math.floor(Math.random() * cards.length);
 const splicedArr = cards.splice(randomIndex, 1);
 const randomCard = splicedArr[0];
-const cardsVisible = document.createElement('p');
-cardsVisible.innerHTML = `${randomCard.picture}`;
-p.appendChild(exampleRow);
+const cardsVisible = document.createElement('img');
+cardsVisible.src = randomCard.picture;
+cardsVisible.alt = randomCard.name;
+const displaySection = document.querySelector("#display-cards");
+displaySection.appendChild(cardsVisible);
 }
 
 /*function displayChrono(){
