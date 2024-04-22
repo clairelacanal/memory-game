@@ -47,37 +47,10 @@ const cards = [
         name: "card12",
         picture: "../images/cards/flower-card12.jpg",
     },
-    {
-        name: "card13",
-        picture: "../images/cards/flower-card13.jpg",
-    },
-    {
-        name: "card14",
-        picture: "../images/cards/flower-card14.jpg",
-    },
-    {
-        name: "card15",
-        picture: "../images/cards/flower-card15.jpg",
-    },
-    {
-        name: "card16",
-        picture: "../images/cards/flower-card16.jpg",
-    },
-    {
-        name: "card17",
-        picture: "../images/cards/flower-card17.jpg",
-    },
-    {
-        name: "card18",
-        picture: "../images/cards/flower-card18.jpg",
-    },
-    {
-        name: "card19",
-        picture: "../images/cards/flower-card19.jpg",
-    },
-    {
-        name: "card20",
-        picture: "../images/cards/flower-card20.jpg",
-    }
+    
     
 ];
+
+const totalCards = [...cards,...cards.map(card =>({...card}))];
+
+
