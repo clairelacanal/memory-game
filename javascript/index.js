@@ -14,6 +14,7 @@ buttonEnter.addEventListener('click', function(){
 
 buttonStart.addEventListener('click',function(){
     console.log('bouton start cliqué');
+    shuffle(window.totalCards); // S'assurer que totalCards est accessible
     displayCards();
 })
 
@@ -29,30 +30,33 @@ alert(inputAge);
 }*/
 
 function displayText(){
-const inputName = document.querySelector('#name').value;
-const paragraphe = document.querySelector('#display-text');
-paragraphe.textContent = `Hello ${inputName}, find the 12 pairs of flowers! Watch the clock! To start playing, press the start button."`;
+    const inputName = document.querySelector('#name').value;
+    const paragraphe = document.querySelector('#display-text');
+    paragraphe.textContent = `Hello ${inputName}, find the 12 pairs of flowers! Watch the clock! To start playing, press the start button."`;
 }
 
-function displayCards(){
-const randomIndex = Math.floor(Math.random() * totalCards.length);
-const splicedArr = totalCards.splice(randomIndex, 1);
-const randomCard = splicedArr[0];
-const cardsVisible = document.createElement('img');
-cardsVisible.src = randomCard.picture;
-cardsVisible.alt = randomCard.name;
-cardsVisible.className = "cards";
-const displaySection = document.querySelector("#display-cards");
-displaySection.appendChild(cardsVisible);
-shuffle(totalCards);
+function displayCards() {
+    const displaySection = document.querySelector("#display-cards");
+    displaySection.innerHTML = ''; 
+
+    // Afficher toutes les cartes du tableau totalCards
+    totalCards.forEach(card => {
+        const cardElement = document.createElement('img');
+        cardElement.src = '../images/cards/carte-face-cachee.jpg';  
+        cardElement.alt = "carte face cachée"; 
+        cardElement.className = "card"; 
+
+       
+      //gérer le retournement des cartes
+        cardElement.addEventListener('click', () => {
+            // Logique de retournement ou de vérification des paires
+        });
+
+        displaySection.appendChild(cardElement); 
+    });
 }
 
-function shuffle(array){
-    for(let i = array.length -1; i > 0; i--){
-        const j = Math.floor(Math.random()*(i+1));
-        [array[i],array[j]] = [array[j],array[i]];
-    }
-}
+
 
 
 /*function displayChrono(){
