@@ -67,11 +67,22 @@ main {
     background-color: var(--background-white);
 }
 
+#display-cards {
+    display: flex; 
+    flex-direction: row; 
+    align-items: flex-start; 
+    justify-content: space-around; 
+    flex-wrap: wrap; 
+    border: 1px solid red; 
+    padding: 2rem 0; 
+    gap: 1rem; 
+}
+
+
 .cards {
     width: 10rem;  
     height: 13rem; 
-    object-fit: cover; 
-    display: block; 
+    object-fit: cover;  
     border-radius: 10px; 
     box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
 }
