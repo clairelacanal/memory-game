@@ -66,3 +66,12 @@ body {
 main {
     background-color: var(--background-white);
 }
+
+.cards {
+    width: 10rem;  
+    height: 13rem; 
+    object-fit: cover; 
+    display: block; 
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); 
+}

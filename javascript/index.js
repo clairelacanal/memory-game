@@ -41,6 +41,7 @@ const randomCard = splicedArr[0];
 const cardsVisible = document.createElement('img');
 cardsVisible.src = randomCard.picture;
 cardsVisible.alt = randomCard.name;
+cardsVisible.className = "cards";
 const displaySection = document.querySelector("#display-cards");
 displaySection.appendChild(cardsVisible);
 }
