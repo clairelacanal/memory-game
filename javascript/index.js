@@ -15,6 +15,7 @@ buttonStart.addEventListener('click',function(){
     displayCards();
     buttonStart.style.display = "none";
     displayChrono();
+    displayScore();
 })
 
 
@@ -56,9 +57,17 @@ function displayCards() {
             displaySection.appendChild(cardElement); 
         });
     }
+
+function checkAllCardsFlipped() {
+    const cards = document.querySelectorAll('.card');
+    const allFlipped = Array.from(cards).every(card => card.classList.contains('flipped'));
     
-
-
+    if (allFlipped) {
+        console.log('Toutes les cartes ont été retournées!');
+        // CODE A AJOUTER POUR : Stopper le jeu, afficher le score et le WIN
+    }
+}
+    
 function shuffle(array){
     for(let i = array.length -1; i > 0; i--){
         const j = Math.floor(Math.random()*(i+1));
@@ -76,6 +85,7 @@ function flipCard(card,cardElement){
     if(isChecking) return; // Ne fait rien si déjà en train de vérifier deux cartes
     if(cardElement.classList.contains('flipped')) return; // empêche le recliquage sur la même carte;
     cardElement.classList.add('flipped'); //ajoute la classe pour indiquer que la carte est retournée;
+    checkAllCardsFlipped(); // vérifie que toutes les cartes ont été retournées
     cardElement.src = card.picture; //change l'image pour montrer la face de la carte;
 
     if(!firstCard){
@@ -126,6 +136,15 @@ const time = setInterval(() => {
 }, 1000)
 };
 
+
+function displayScore(){
+    const score = document.querySelector("#display-score");
+    score.textContent = 
+    `Tu as gagné 3 fois
+    Tu as perdu 5 fois`;
+    score.className = "score-presentation";
+    checkAllCardsFlipped();
+}
 
 
 /*
