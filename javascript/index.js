@@ -4,25 +4,33 @@ const buttonStart = document.querySelector('#button-start');
 
   
 //EVENEMENTS SUR LES BOUTONS
-buttonEnter.addEventListener('click', function(){
+buttonEnter.addEventListener('click', function(e){
+    e.preventDefault();  
     displayText();
-    shuffle(totalCards);
-    displayCards();
+    
 })
 
 buttonStart.addEventListener('click',function(){
-    console.log('bouton start cliqué');
-    displayChrono();
+    shuffle(totalCards);
+    displayCards();
     buttonStart.style.display = "none";
+    displayChrono();
 })
 
 
 //FONCTIONS 
 
 function displayText(){
+    const age = parseInt(document.querySelector('#age').value, 10);
+    let pairs = "";
+    if(age <= 12){
+        pairs = "6";
+    }else if( age > 12){
+        pairs = "12";
+    }
     const inputName = document.querySelector('#name').value;
     const paragraphe = document.querySelector('#display-text');
-    paragraphe.textContent = `Hello ${inputName}, find the 12 pairs of flowers! Watch the clock! To start playing, press the start button.`;
+    paragraphe.textContent = `Hello ${inputName}, find the ${pairs} pairs of flowers! Watch the clock! To start playing, press the start button.`;
     paragraphe.className = "paragraphe-presentation"
 }
 
@@ -105,7 +113,7 @@ const departMinutes = 2;
 let temps = departMinutes * 60;
 const chrono = document.querySelector("#time");
 
-function displayChrono(){
+function displayChrono(){ 
 const time = setInterval(() => {
     let minutes = parseInt(temps/60,10);
     let secondes = parseInt(temps%60,10);
