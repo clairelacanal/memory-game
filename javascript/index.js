@@ -6,12 +6,13 @@ const buttonStart = document.querySelector('#button-start');
 //EVENEMENTS SUR LES BOUTONS
 buttonEnter.addEventListener('click', function(){
     displayText();
+    shuffle(totalCards);
+    displayCards();
 })
 
 buttonStart.addEventListener('click',function(){
     console.log('bouton start cliqué');
-    shuffle(totalCards); 
-    displayCards();
+    displayChrono();
 })
 
 
@@ -93,11 +94,28 @@ function flipCard(card,cardElement){
     }
 }
 
+//Variables globales
+const departMinutes = 2;
+let temps = departMinutes * 60;
+const chrono = document.querySelector("#time");
+
+function displayChrono(){
+const time = setInterval(() => {
+    let minutes = parseInt(temps/60,10);
+    let secondes = parseInt(temps%60,10);
+
+    minutes = minutes < 10 ? "0" + minutes : minutes;
+    secondes = secondes < 10 ? "0" + secondes : secondes;
+
+    chrono.textContent = `${minutes}:${secondes}`;
+    temps = temps <= 0 ? 0 : temps -1;
+}, 1000)
+};
 
 
-/*function displayChrono(){
-   
-}*/
+
+  
+
 
 
 /*function buttonStart(){}
