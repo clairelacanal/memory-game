@@ -53,4 +53,12 @@ const cards = [
 
 const totalCards = [...cards,...cards.map(card =>({...card}))];
 
+
+const cardsEnfant = cards.slice(0,6);
+const totalCardsEnfant = [...cardsEnfant,...cardsEnfant.map(card => ({...card}))];
+
+
+
+
 window.totalCards = totalCards;
+window.totalCardsEnfant = totalCardsEnfant;

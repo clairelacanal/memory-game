@@ -147,6 +147,10 @@ main #button-start {
     gap: 1rem; 
 }
 
+#display-cards-enfants {
+    border: 1px solid red;
+}
+
 .card {
     width: 7rem;  
     height: 9rem; 
@@ -155,6 +159,9 @@ main #button-start {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease; 
+}
+.cardsEnfant {
+    border: 1px solid red;
 }
 
 .card:hover {

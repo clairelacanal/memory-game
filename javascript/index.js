@@ -27,24 +27,29 @@ function displayText(){
 }
 
 function displayCards() {
+    const age = parseInt(document.querySelector('#age').value, 10);
     const displaySection = document.querySelector("#display-cards");
     displaySection.innerHTML = ''; 
 
-    // Afficher toutes les cartes du tableau totalCards
-    totalCards.forEach(card => {
-        const cardElement = document.createElement('img');
-        cardElement.src = '../images/cards/carte-face-cachee.jpg';  
-        cardElement.alt = "carte face cachée"; 
-        cardElement.className = "card"; 
-       
-      //gérer le retournement des cartes
-        cardElement.addEventListener('click', () => {
-            flipCard(card, cardElement);  
-        });
+    const cardsToDisplay = age <= 12 ? totalCardsEnfant : totalCards;
 
-        displaySection.appendChild(cardElement); 
-    });
-}
+    // Afficher toutes les cartes du tableau 
+        cardsToDisplay.forEach(card => {
+            const cardElement = document.createElement('img');
+            cardElement.src = '../images/cards/carte-face-cachee.jpg';  
+            cardElement.alt = "carte face cachée"; 
+            cardElement.className = "card"; 
+           
+          //gérer le retournement des cartes
+            cardElement.addEventListener('click', () => {
+                flipCard(card, cardElement);  
+            });
+    
+            displaySection.appendChild(cardElement); 
+        });
+    }
+    
+
 
 function shuffle(array){
     for(let i = array.length -1; i > 0; i--){
