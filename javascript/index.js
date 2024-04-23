@@ -13,6 +13,7 @@ buttonEnter.addEventListener('click', function(){
 buttonStart.addEventListener('click',function(){
     console.log('bouton start cliqué');
     displayChrono();
+    buttonStart.style.display = "none";
 })
 
 
@@ -114,12 +115,7 @@ const time = setInterval(() => {
 
 
 
-  
-
-
-
-/*function buttonStart(){}
-
+/*
 
 function exitGame(){}
 
