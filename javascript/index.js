@@ -184,9 +184,9 @@ function openModal() {
 
     // Bouton pour fermer le popup
     const closeButton = document.createElement('button');
-    closeButton.textContent = 'Fermer';
+    closeButton.textContent = 'Exit';
     closeButton.onclick = function() {
-        closeModal(modalBackground);
+        exitGame(modalBackground);
     };
 
     // Assemble le contenu du popup
@@ -200,14 +200,17 @@ function openModal() {
     document.body.appendChild(modalBackground);
 }
 
-function closeModal(modalElement) {
-    document.body.removeChild(modalElement);
+function exitGame(modalElement) {
+    modalElement.addEventListener('click', function() {
+        document.body.removeChild(modalElement);
+        window.location.href = '/';  // Redirige vers la page d'accueil
+    });
 }
 
 
-/*
 
-function exitGame(){}
 
-function buttonRestart(){}*/
+
+
+function buttonRestart(){}
 
