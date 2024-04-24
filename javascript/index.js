@@ -141,10 +141,19 @@ function displayChrono(){
 
     chrono.textContent = `${minutes}:${secondes}`;
     temps = temps <= 0 ? 0 : temps -1;
-    if(temps <= 0 || checkAllCardsFlipped()){
+    if(temps <= 0){
         clearInterval(time);
-        openModal();
-        console.log("toutes les cartes sont retournées, le chrono s'arrête");
+        if(checkAllCardsFlipped()){
+            console.log("tu as gagné");
+            openModal("win");
+        }else{
+            console.log("tu as perdu");
+            openModal("lost");
+        }
+    }else if(checkAllCardsFlipped()){
+        clearInterval(time);
+        console.log("toutes les cartes sont retournées avant la fin");
+        openModal("win");
     }
 }, 1000)
 };
@@ -158,7 +167,7 @@ function displayScore(){
     score.className = "score-presentation";
 }
 
-function openModal() {
+function openModal(result) {
     // Le fond noir
     const modalBackground = document.createElement('div');
     modalBackground.setAttribute('id', 'modal-background');
@@ -180,10 +189,21 @@ function openModal() {
     modalContent.style.width = '80%';
     modalContent.style.maxWidth = '600px';
 
+    // Pour afficher mes boutons sur la même ligne
+    const containerButtons = document.createElement('div');
+    containerButtons.className = "container-button";
+
     // Message dans le popup
     const modalText = document.createElement('p');
+    const win = "&#128525;";
+    const lost = "&#128546;";
     modalText.className = "modal-text";
-    modalText.textContent = "Awesome! You've WON! You can play again and beat your record or quit the game.";
+    if(result === "win"){
+        modalText.innerHTML = `Awesome! You've WON! ${win}<br>You can play again and beat your record or quit the game.`;
+    } else {
+        modalText.innerHTML = `You've lost! ${lost}<br>Don't be discouraged! You can play again or quit the game.`;
+    }
+    
 
     // Bouton pour rejouer
     const buttonRestart = document.createElement('button-restart');
@@ -204,8 +224,9 @@ function openModal() {
 
     // Assemble le contenu du popup
     modalContent.appendChild(modalText);
-    modalContent.appendChild(closeButton);
-    modalContent.appendChild(buttonRestart);
+    modalContent.appendChild(containerButtons);
+    containerButtons.appendChild(closeButton);
+    containerButtons.appendChild(buttonRestart);
 
     // Ajoute le contenu au fond noir
     modalBackground.appendChild(modalContent);
