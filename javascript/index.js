@@ -12,6 +12,7 @@ buttonEnter.addEventListener('click', function(e){
 
 buttonStart.addEventListener('click',function(){
     shuffle(totalCards);
+    shuffle(totalCardsEnfant);
     displayCards();
     buttonStart.style.display = "none";
     displayChrono();
@@ -139,6 +140,7 @@ const time = setInterval(() => {
     temps = temps <= 0 ? 0 : temps -1;
     if(temps <= 0 || checkAllCardsFlipped()){
         clearInterval(time);
+        openModal();
         console.log("toutes les cartes sont retournées, le chrono s'arrête");
     }
 }, 1000)
@@ -151,6 +153,55 @@ function displayScore(){
     `Tu as gagné 3 fois
     Tu as perdu 5 fois`;
     score.className = "score-presentation";
+}
+
+function openModal() {
+    // Le fond noir
+    const modalBackground = document.createElement('div');
+    modalBackground.setAttribute('id', 'modal-background');
+    modalBackground.style.position = 'fixed';
+    modalBackground.style.top = '0';
+    modalBackground.style.left = '0';
+    modalBackground.style.width = '100%';
+    modalBackground.style.height = '100%';
+    modalBackground.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    modalBackground.style.display = 'flex';
+    modalBackground.style.justifyContent = 'center';
+    modalBackground.style.alignItems = 'center';
+
+    // Le contenu du popup
+    const modalContent = document.createElement('div');
+    modalContent.setAttribute('id', 'modal-content');
+    modalContent.style.padding = '20px';
+    modalContent.style.borderRadius = '5px';
+    modalContent.style.width = '80%';
+    modalContent.style.maxWidth = '600px';
+
+    // Message dans le popup
+    const modalText = document.createElement('p');
+    modalText.className = "modal-text";
+    modalText.textContent = "Awesome! You've WON! You can play again and beat your record or quit the game.";
+
+    // Bouton pour fermer le popup
+    const closeButton = document.createElement('button');
+    closeButton.textContent = 'Fermer';
+    closeButton.onclick = function() {
+        closeModal(modalBackground);
+    };
+
+    // Assemble le contenu du popup
+    modalContent.appendChild(modalText);
+    modalContent.appendChild(closeButton);
+
+    // Ajoute le contenu au fond noir
+    modalBackground.appendChild(modalContent);
+
+    // Ajoute le fond noir au document
+    document.body.appendChild(modalBackground);
+}
+
+function closeModal(modalElement) {
+    document.body.removeChild(modalElement);
 }
 
 

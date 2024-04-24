@@ -180,4 +180,13 @@ main #button-start {
 .score-presentation {
     border: 1px solid red;
 }
+
+#modal-content {
+    background-color: var(--backgroung-green);
+}
+
+.modal-text {
+    color: var(--background-beige);
+    text-align: center;
+}
   
