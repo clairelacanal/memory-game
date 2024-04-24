@@ -159,13 +159,35 @@ function displayChrono(){
 };
 
 
-function displayScore(){
+function displayScore() {
     const score = document.querySelector("#display-score");
-    score.textContent = 
-    `Tu as gagné 3 fois
-    Tu as perdu 5 fois`;
+    score.innerHTML = ''; // Nettoyer le contenu précédent si nécessaire
     score.className = "score-presentation";
+
+    // Création de l'élément pour "Win"
+    const winLabel = document.createElement('span');
+    winLabel.textContent = "Win: ";
+    score.appendChild(winLabel);
+
+    // Création de l'icône pour "Win"
+    const winIcon = document.createElement('i');
+    winIcon.className = "fa-solid fa-clover";
+    score.appendChild(winIcon);
+
+    // Ajout de saut de ligne
+    score.appendChild(document.createElement('br'));
+
+    // Création de l'élément pour "Defeat"
+    const defeatLabel = document.createElement('span');
+    defeatLabel.textContent = "Defeat: ";
+    score.appendChild(defeatLabel);
+
+    // Création de l'icône pour "Defeat" 
+    const defeatIcon = document.createElement('i');
+    defeatIcon.className = "fa-solid fa-bug"; 
+    score.appendChild(defeatIcon);
 }
+
 
 function openModal(result) {
     // Le fond noir

@@ -178,7 +178,18 @@ main #button-start {
 }
 
 .score-presentation {
-    border: 1px solid red;
+    background-color: var(--color-text-title);
+    color: var(--background-beige);
+    font-weight: 700;
+    text-align: center;
+    padding: 0.8rem;
+    width: 12rem;
+    height: 5rem;
+    border-radius: 0.2rem;
+}
+
+.icon {
+    font-size: 1rem;
 }
 
 #modal-content {
