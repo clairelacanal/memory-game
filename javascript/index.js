@@ -10,14 +10,16 @@ buttonEnter.addEventListener('click', function(e){
     
 })
 
-buttonStart.addEventListener('click',function(){
-    shuffle(totalCards);
-    shuffle(totalCardsEnfant);
-    displayCards();
-    buttonStart.style.display = "none";
-    displayChrono();
-    displayScore();
-})
+    buttonStart.addEventListener('click',function(){
+        shuffle(totalCards);
+        shuffle(totalCardsEnfant);
+        displayCards();
+        buttonStart.style.display = "none";
+        displayChrono();
+        displayScore();
+    });
+
+
 
 
 //FONCTIONS 
@@ -124,12 +126,13 @@ function flipCard(card,cardElement){
 }
 
 //Variables globales
+let time;
 const departMinutes = 2;
 let temps = departMinutes * 60;
 const chrono = document.querySelector("#time");
 
 function displayChrono(){ 
-const time = setInterval(() => {
+    time = setInterval(() => {
     let minutes = parseInt(temps/60,10);
     let secondes = parseInt(temps%60,10);
 
@@ -189,9 +192,18 @@ function openModal() {
         exitGame(modalBackground);
     };
 
+    // Bouton pour rejouer
+    const buttonRestart = document.createElement('button-restart');
+    buttonRestart.textContent = 'Rejouer';
+    buttonRestart.onclick = function() {
+        reStart(modalBackground);
+        displayChrono();
+    }
+
     // Assemble le contenu du popup
     modalContent.appendChild(modalText);
     modalContent.appendChild(closeButton);
+    modalContent.appendChild(buttonRestart);
 
     // Ajoute le contenu au fond noir
     modalBackground.appendChild(modalContent);
@@ -207,10 +219,20 @@ function exitGame(modalElement) {
     });
 }
 
+function reStart(modalElement){
+    modalElement.addEventListener('click', function() {
+        clearInterval(time);
+        document.body.removeChild(modalElement);
+        temps = departMinutes * 60;
+        displayChrono();
+        displayCards();
+    })
+}
 
 
 
 
 
-function buttonRestart(){}
+
+
 
