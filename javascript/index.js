@@ -185,20 +185,22 @@ function openModal() {
     modalText.className = "modal-text";
     modalText.textContent = "Awesome! You've WON! You can play again and beat your record or quit the game.";
 
-    // Bouton pour fermer le popup
-    const closeButton = document.createElement('button');
-    closeButton.textContent = 'Exit';
-    closeButton.onclick = function() {
-        exitGame(modalBackground);
-    };
-
     // Bouton pour rejouer
     const buttonRestart = document.createElement('button-restart');
-    buttonRestart.textContent = 'Rejouer';
+    buttonRestart.className = "button-restart";
+    buttonRestart.textContent = 'REPLAY';
     buttonRestart.onclick = function() {
         reStart(modalBackground);
         displayChrono();
     }
+
+    // Bouton pour fermer le popup
+    const closeButton = document.createElement('button');
+    closeButton.className = "button-exit"
+    closeButton.textContent = 'EXIT';
+    closeButton.onclick = function() {
+        exitGame(modalBackground);
+    };
 
     // Assemble le contenu du popup
     modalContent.appendChild(modalText);

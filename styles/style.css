@@ -190,6 +190,37 @@ main #button-start {
     text-align: center;
 }
 
+.button-restart {
+    display: block;
+    margin: 0 auto;
+    width: 8rem;
+    height: 2rem;
+    background-color: var(--background-yellow);
+    border: 1px solid var(--background-yellow);
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    color: var(--backgroung-green);
+    font-weight: 700;
+}
+
+.button-exit {
+    display: block;
+    margin: 0 auto;
+    width: 8rem;
+    height: 2rem;
+    background-color: red;
+    border: 1px solid red;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    color: var(--background-white);
+    font-weight: 700;
+
+}
+
 
 
   
