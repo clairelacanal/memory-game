@@ -42,7 +42,7 @@ function displayCards() {
     const age = parseInt(document.querySelector('#age').value, 10);
     const displaySection = document.querySelector("#display-cards");
     displaySection.innerHTML = ''; 
-
+    age <= 12 ? displaySection.classList.add("enfant") : displaySection.classList.remove("enfant");
     const cardsToDisplay = age <= 12 ? totalCardsEnfant : totalCards;
 
     // Afficher toutes les cartes du tableau 
@@ -146,48 +146,20 @@ function displayChrono(){
         if(checkAllCardsFlipped()){
             console.log("tu as gagné");
             openModal("win");
+            updateScore("win");
         }else{
             console.log("tu as perdu");
             openModal("lost");
+            updateScore("lost");
         }
     }else if(checkAllCardsFlipped()){
         clearInterval(time);
         console.log("toutes les cartes sont retournées avant la fin");
         openModal("win");
-    }
+        updateScore("win");
+    };
 }, 1000)
 };
-
-
-function displayScore() {
-    const score = document.querySelector("#display-score");
-    score.innerHTML = ''; // Nettoyer le contenu précédent si nécessaire
-    score.className = "score-presentation";
-
-    // Création de l'élément pour "Win"
-    const winLabel = document.createElement('span');
-    winLabel.textContent = "Win: ";
-    score.appendChild(winLabel);
-
-    // Création de l'icône pour "Win"
-    const winIcon = document.createElement('i');
-    winIcon.className = "fa-solid fa-clover";
-    score.appendChild(winIcon);
-
-    // Ajout de saut de ligne
-    score.appendChild(document.createElement('br'));
-
-    // Création de l'élément pour "Defeat"
-    const defeatLabel = document.createElement('span');
-    defeatLabel.textContent = "Defeat: ";
-    score.appendChild(defeatLabel);
-
-    // Création de l'icône pour "Defeat" 
-    const defeatIcon = document.createElement('i');
-    defeatIcon.className = "fa-solid fa-bug"; 
-    score.appendChild(defeatIcon);
-}
-
 
 function openModal(result) {
     // Le fond noir
@@ -225,6 +197,7 @@ function openModal(result) {
     } else {
         modalText.innerHTML = `You've lost! ${lost}<br>Don't be discouraged! You can play again or quit the game.`;
     }
+    
     
 
     // Bouton pour rejouer
@@ -273,6 +246,49 @@ function reStart(modalElement){
         displayCards();
     })
 }
+
+//Pour compter les points
+let wins = 0;
+let defeats = 0;
+
+//Création di container qui va montrer mon score
+const score = document.querySelector("#display-score");
+score.innerHTML = ''; // Nettoyer le contenu précédent si nécessaire
+score.className = "score-presentation";
+
+//Création de l'élément pour WIN
+const winLabel = document.createElement('span');
+winLabel.textContent = "Win :";
+score.appendChild(winLabel);
+
+//Création d'un saut de ligne
+score.appendChild(document.createElement('br'));
+
+//Création de l'élément pour DEFEAT
+const defeatLabel = document.createElement('span');
+defeatLabel.textContent = "Defeat :";
+score.appendChild(defeatLabel);
+
+function updateScore(win){
+    if(win){
+        console.log("tu as gagné 1 point");
+
+        const winIcon = document.createElement('i');
+        winIcon.className = "fa-solid fa-clover";
+        winLabel.appendChild(winIcon);
+    }else{
+        console.log("tu n'as pas gagné de point");
+
+        const defeatIcon = document.createElement('i');
+        defeatIcon.className = "fa-solid fa-bug";
+        defeatLabel.appendChild(defeatIcon);
+    }
+    
+}
+
+
+
+
 
 
 
