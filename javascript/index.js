@@ -63,8 +63,12 @@ function checkAllCardsFlipped() {
     const allFlipped = Array.from(cards).every(card => card.classList.contains('flipped'));
     
     if (allFlipped) {
+        return true;
         console.log('Toutes les cartes ont été retournées!');
         // CODE A AJOUTER POUR : Stopper le jeu, afficher le score et le WIN
+
+    }else{
+        return false;
     }
 }
     
@@ -133,6 +137,10 @@ const time = setInterval(() => {
 
     chrono.textContent = `${minutes}:${secondes}`;
     temps = temps <= 0 ? 0 : temps -1;
+    if(temps <= 0 || checkAllCardsFlipped()){
+        clearInterval(time);
+        console.log("toutes les cartes sont retournées, le chrono s'arrête");
+    }
 }, 1000)
 };
 
@@ -143,7 +151,6 @@ function displayScore(){
     `Tu as gagné 3 fois
     Tu as perdu 5 fois`;
     score.className = "score-presentation";
-    checkAllCardsFlipped();
 }
 
 
