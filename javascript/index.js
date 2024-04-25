@@ -244,7 +244,7 @@ function openModal(result) {
 function exitGame(modalElement) {
     modalElement.addEventListener('click', function() {
         document.body.removeChild(modalElement);
-        window.location.href = '/';  // Redirige vers la page d'accueil
+        window.location.reload();
     });
 }
 
