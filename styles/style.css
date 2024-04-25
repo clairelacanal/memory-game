@@ -34,7 +34,7 @@ body main {
 }
 
 #background-popup{
-    background-image: url(/images/background/background-flower.jpg);
+    background-image: url(../images/background/background-flower.jpg);
     background-size: cover;
     height: 100vh;
     margin: 0;
