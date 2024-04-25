@@ -187,7 +187,6 @@ main #button-start {
 
 #display-cards.enfant{
     max-width: 57rem;
-    background-color: red;
     margin: 0 auto;
 }
 
@@ -210,7 +209,7 @@ main #button-start {
 
 .score-presentation {
     background-color: var(--color-text-title);
-    color: var(--background-beige);
+    color: var(--background-yellow);
     font-weight: 700;
     padding: 0.8rem;
     width: 12rem;
