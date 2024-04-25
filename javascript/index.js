@@ -57,7 +57,7 @@ function displayCards() {
     // Afficher toutes les cartes du tableau 
         cardsToDisplay.forEach(card => {
             const cardElement = document.createElement('img');
-            cardElement.src = '../images/cards/carte-face-cachee.jpg';  
+            cardElement.src = './images/cards/carte-face-cachee.jpg';  
             cardElement.alt = "carte face cachée"; 
             cardElement.className = "card"; 
            
