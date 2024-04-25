@@ -34,6 +34,16 @@ body {
     background-size: cover;
     height: 100vh;
     margin: 0;
+    position: fixed;
+    width: 100vw;
+}
+
+.hidden {
+    display: none;
+}
+
+.visibility {
+    display: visible;
 }
 
 #container-popup{

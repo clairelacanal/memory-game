@@ -1,12 +1,24 @@
+
 //HTML ELEMENTS
+const popup = document.querySelector("#background-popup");
 const buttonEnter = document.querySelector('#button-enter');
 const buttonStart = document.querySelector('#button-start');
 
-  
+//CHARGEMENT POPUP AU DEBUT
+
+function showpopup(){
+    popup.classList.remove('hidden');
+    popup.classList.add('visible');
+}
+
 //EVENEMENTS SUR LES BOUTONS
+
 buttonEnter.addEventListener('click', function(e){
     e.preventDefault();  
     displayText();
+    popup.style.display = "none";
+
+    
     
 })
 
