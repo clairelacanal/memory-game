@@ -123,8 +123,8 @@ function flipCard(card,cardElement){
             setTimeout(() => {
                 firstCard.cardElement.classList.remove('flipped');
                 secondCard.cardElement.classList.remove('flipped');
-                firstCard.cardElement.src = '../images/cards/carte-face-cachee.jpg';
-                secondCard.cardElement.src = '../images/cards/carte-face-cachee.jpg';
+                firstCard.cardElement.src = './images/cards/carte-face-cachee.jpg';
+                secondCard.cardElement.src = './images/cards/carte-face-cachee.jpg';
 
                 firstCard = null;
                 secondCard = null;
