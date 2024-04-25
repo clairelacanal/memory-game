@@ -16,20 +16,17 @@ function showpopup(){
 buttonEnter.addEventListener('click', function(e){
     e.preventDefault();  
     displayText();
-    popup.style.display = "none";
-
-    
-    
+    shuffle(totalCards);
+    shuffle(totalCardsEnfant);
+    displayCards();
+    popup.style.display = "none";   
 })
 
-    buttonStart.addEventListener('click',function(){
-        shuffle(totalCards);
-        shuffle(totalCardsEnfant);
-        displayCards();
-        buttonStart.style.display = "none";
-        displayChrono();
-        displayScore();
-    });
+buttonStart.addEventListener('click',function(){
+    buttonStart.style.display = "none";
+    displayChrono();
+    displayScore();
+});
 
 
 
@@ -143,13 +140,15 @@ const departMinutes = 2;
 let temps = departMinutes * 60;
 const chrono = document.querySelector("#time");
 
-function displayChrono(){ 
+function displayChrono(){
+    chrono.style.display = "block"; 
     time = setInterval(() => {
     let minutes = parseInt(temps/60,10);
     let secondes = parseInt(temps%60,10);
 
     minutes = minutes < 10 ? "0" + minutes : minutes;
     secondes = secondes < 10 ? "0" + secondes : secondes;
+
 
     chrono.textContent = `${minutes}:${secondes}`;
     temps = temps <= 0 ? 0 : temps -1;
@@ -255,6 +254,8 @@ function reStart(modalElement){
         document.body.removeChild(modalElement);
         temps = departMinutes * 60;
         displayChrono();
+        shuffle(totalCards);
+        shuffle(totalCardsEnfant);
         displayCards();
     })
 }
@@ -281,19 +282,19 @@ const defeatLabel = document.createElement('span');
 defeatLabel.textContent = "Defeat :";
 score.appendChild(defeatLabel);
 
-function updateScore(win){
-    if(win){
+function updateScore(){
+    if(checkAllCardsFlipped()){
         console.log("tu as gagné 1 point");
-
-        const winIcon = document.createElement('i');
-        winIcon.className = "fa-solid fa-clover";
-        winLabel.appendChild(winIcon);
+        winLabel.textContent += " 🍀"; 
+        //const winIcon = document.createElement('i');
+        //winIcon.className = "fa-solid fa-clover";
+        //winLabel.appendChild(winIcon);
     }else{
         console.log("tu n'as pas gagné de point");
-
-        const defeatIcon = document.createElement('i');
-        defeatIcon.className = "fa-solid fa-bug";
-        defeatLabel.appendChild(defeatIcon);
+        defeatLabel.textContent += " 🐛"; 
+        //const defeatIcon = document.createElement('i');
+        //defeatIcon.className = "fa-solid fa-bug";
+        //defeatLabel.appendChild(defeatIcon);
     }
     
 }
